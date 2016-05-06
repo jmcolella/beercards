@@ -1,7 +1,8 @@
 
 get '/deck/:id/round' do
   @deck = Deck.find_by(id: params[:id])
-  @round = Round.new(deck: @deck, user: current_user)
+  @round = Round.create(deck: @deck, user: current_user)
+  session[:round_id] = @round.id
   cards = @deck.cards
   @card_display = cards.first
   #call method to display and go through cards in deck
@@ -10,23 +11,29 @@ end
 
 
 post '/round' do
-  @guess = Guess.new(params[:guess])
-  current_card = params[:guess][:card_id]
-  @deck = params[:guess][:card_id].deck
-  cards = @deck.cards
+  @guess = Guess.create(params[:guess])
+  current_card = Card.find_by(id: params[:guess][:card_id])
+  deck = current_card.deck
+  cards = deck.cards
+  round_id = session[:round_id]
+  @round = Round.find_by(id: round_id)
 
-  until @guess.correct_answers_return.length == @deck.length
+  # binding.pry
 
-    if @guess == current_card.answer
-      @guess.correct_guesses(current_card)
+  until @round.correct_answers_return == 2
+
+    if @guess.guess_name == current_card.answer
+      @round.correct_guesses(current_card)
       @card_display = cards.rotate[0]
+      erb :'round/new'
     else
       @card_display = cards.rotate[0]
+      erb :'round/new'
     end
 
   end
   #check answer call
-  erb :'round/new'
+  "Done"
 end
 
 get '/round/:id' do
