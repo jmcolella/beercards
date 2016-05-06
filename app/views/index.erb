@@ -1,0 +1,7 @@
+<h1>Welcome to Beer Cards!</h1>
+
+  <ul class="entries">
+    <% @deck.each do |deck| %>
+    <li><a href="<%= "deck/#{deck.id}" %>"><%= deck.name %></a></li>
+      <% end %>
+  </ul>

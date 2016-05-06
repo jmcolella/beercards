@@ -1,1 +1,16 @@
-#PROFILE AFTER CLICKING "PROFILE" AT END OF ROUND
+<h1><%=@user.username %>'s Profile</h1>
+
+<%@user.rounds.each do |round|%>
+<h2><%=round.deck.name%></h2>
+
+<table>
+  <td>
+    <tr>
+      <%=round.deck.created_at%>
+    </tr>
+    <tr>
+      <%=round.deck.num_of_cards%>
+    </tr>
+  </td>
+</table>
+<%end%>
