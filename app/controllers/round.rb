@@ -1,8 +1,5 @@
 
 get '/deck/:id/round' do
-  @deck = Deck.find_by(id: params[:id])
-  @round = Round.create(deck: @deck, user: current_user)
-  session[:round_id] = @round.id
   cards = @deck.cards
   @card_display = cards.first
   #call method to display and go through cards in deck
@@ -11,6 +8,10 @@ end
 
 
 post '/round' do
+  @deck = Deck.find_by(id: params[:deck_id])
+  @round = Round.create(deck: @deck, user: current_user)
+  redirect "/round/#{@round.id}"
+
 #   @guess = Guess.create(params[:guess])
 #   current_card = Card.find_by(id: params[:guess][:card_id])
 #   deck = current_card.deck
@@ -32,7 +33,7 @@ post '/round' do
 #     end
 #   end
 #   #check answer call
-  "Done"
+
 end
 
 get '/round/:id' do
