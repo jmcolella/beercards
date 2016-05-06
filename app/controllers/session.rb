@@ -5,11 +5,12 @@ end
 post '/login' do
   user = User.find_by(params[:username])
 
-  if user.authenticate(params[:user])
+  if user.authenticate(params[:password])
     session[:user_id] = user.id
     redirect "/"
   else
     @errors = user.errors.full_messages
+
     erb :'/login/new'
   end
 end
