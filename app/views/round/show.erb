@@ -1,5 +1,11 @@
-<h1>Your Round's Results</h1>
 
-<% if logged_in? %>
-<a href='/user/show'> profile </a>
-<% end %>
+<h1>You are about to play <%= @deck.name %></h1>
+
+<%= @card_display.question %>
+
+<form method ="post" action="/round">
+  <input type ="hidden" name ="guess[round_id]" value= "<%=@round.id %>">
+  <input type="hidden" name = "guess[card_id]" value= "<%=@card_display.id %>">
+<input type = "text" name = "guess[guess_name]">
+<input type = "submit" value = "submit answer">
+</form>
