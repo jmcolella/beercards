@@ -1,1 +1,22 @@
-#LOGIN PAGE
+<h2> LOGIN TO PLAY </h2>
+<a href="/">Home</a>
+
+<% if @errors %>
+  <ul>
+    <% @errors.each do |message| %>
+      <li> <%= message %> </li>
+    <% end %>
+  </ul>
+  <% end %>
+
+<form action='/login' method="post">
+  <input type="text" name="user[username]" placeholder="Username">
+
+  <input type="password" name="user[password]" placeholder="Password">
+
+  <input type="submit" value="Login">
+</form>
+
+<form action='/logout' method='get'>
+  <input type="submit" value="Logout">
+</form>
