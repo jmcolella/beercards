@@ -5,16 +5,16 @@ class Round < ActiveRecord::Base
 
 
 
-  def correct_guesses(card)
-    @correct_answers = []
-    @correct_answers.push(card)
-    binding.pry
+  # def correct_guesses(card)
+  #   @correct_answers = []
+  #   @correct_answers.push(card)
+  #   binding.pry
 
-  end
+  # end
 
-  def correct_answers_return
-    # binding.pry
-    @correct_answers.length
-  end
+  # def correct_answers_return
+  #   # binding.pry
+  #   @correct_answers.length
+  # end
 
 end

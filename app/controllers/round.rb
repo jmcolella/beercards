@@ -11,28 +11,27 @@ end
 
 
 post '/round' do
-  @guess = Guess.create(params[:guess])
-  current_card = Card.find_by(id: params[:guess][:card_id])
-  deck = current_card.deck
-  cards = deck.cards
-  round_id = session[:round_id]
-  @round = Round.find_by(id: round_id)
+#   @guess = Guess.create(params[:guess])
+#   current_card = Card.find_by(id: params[:guess][:card_id])
+#   deck = current_card.deck
+#   cards = deck.cards
+#   round_id = session[:round_id]
+#   @round = Round.find_by(id: round_id)
 
-  # binding.pry
+#   # binding.pry
+# until @round.guesses.where(correct: true).length == deck.num_of_cards
+#   #until @round.correct_answers_return == 2
 
-  until @round.correct_answers_return == 2
-
-    if @guess.guess_name == current_card.answer
-      @round.correct_guesses(current_card)
-      @card_display = cards.rotate[0]
-      erb :'round/new'
-    else
-      @card_display = cards.rotate[0]
-      erb :'round/new'
-    end
-
-  end
-  #check answer call
+#     if @guess.guess_name == current_card.answer
+#       @guess.correct = true
+#       @card_display = cards.rotate[0]
+#       erb :'round/new'
+#     else
+#       @card_display = cards.rotate[0]
+#       erb :'round/new'
+#     end
+#   end
+#   #check answer call
   "Done"
 end
 
