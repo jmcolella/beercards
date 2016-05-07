@@ -27,6 +27,9 @@ get '/round/:id' do
     erb :'round/show'
   else
     @total_guesses = Guess.where(round_id: @round.id).length
+    first_guesses_array = Card.all.select {|card| card.guesses.where(round_id: @round.id).length == 1}
+
+    @first_guesses = first_guesses_array.length
     erb :'round/results'
   end
 

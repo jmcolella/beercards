@@ -19,7 +19,7 @@
 </head>
 <body>
 <% if logged_in? %>
-  <p>You are logged in, <%=current_user.username%></p>
+  <p>You are logged in, <a href="/user/<%=current_user.id%>"><%=current_user.username%></a></p>
   <li><a href="/">Home</a></li>
   <li><a href='/logout'>Log Out</a></li>
 <% else %>
