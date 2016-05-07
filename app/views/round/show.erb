@@ -5,18 +5,18 @@
 <h1><%= @deck.name %></h1>
   <div class= "cards">
   <% if @right %>
-    <p>You got it right!</p>
+    <p class="right">You got it right!</p>
   <% elsif @wrong %>
-    <p>Wrong! Try again later!</p>
+    <p class="wrong">Wrong! Try again later!</p>
   <% end %>
 
   <%= @card_display.question %>
 
   <form method ="post" action="/round/<%=@round.id%>/guess">
-    <input class="card_input" type ="hidden" name ="guess[round_id]" value= "<%=@round.id %>">
-    <input class="card_input" type="hidden" name = "guess[card_id]" value= "<%=@card_display.id %>">
-  <input class="card_input"type = "text" name = "guess[guess_name]"><br>
-  <input class="card_input" id="submit" type = "submit" value = "submit answer">
+    <input class="input" type ="hidden" name ="guess[round_id]" value= "<%=@round.id %>">
+    <input class="input" type="hidden" name = "guess[card_id]" value= "<%=@card_display.id %>">
+  <input class="input"type = "text" name = "guess[guess_name]"><br>
+  <input class="input" id="submit" type = "submit" value = "submit answer">
   </form>
 
 </div>

@@ -2,10 +2,9 @@
 <link href='https://fonts.googleapis.com/css?family=Comfortaa:700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
+<h1>take a shot!</h1>
 
-
-  <h1>take a shot!</h1>
-  <div id="decks">
+<div id="decks">
   <ul>
     <% @deck.each do |deck| %>
     <li><a href="<%= "deck/#{deck.id}" %>"><%= deck.name.downcase %></a></li>
