@@ -7,12 +7,15 @@
   <tr>
     <td>Date Played</td>
     <td>Number of Cards in Deck</td>
+    <td>Number of First Guesses Right</td>
     <td>Total Number of Guesses</td>
   </tr>
 
   <tr>
     <td><%=round.deck.created_at%></td>
     <td><%=round.deck.num_of_cards%></td>
+    <% first_guesses = round.deck.cards.select {|card| card.guesses.where(round_id: round.id).length == 1} %>
+      <td><%= first_guesses.length %></td>
     <td><%=round.guesses.length%></td>
   </tr>
 

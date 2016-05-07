@@ -14,8 +14,8 @@ post '/user' do
 end
 
 get '/user/:id' do
+
    @user = User.find(params[:id])
-   @user_rounds = @user.rounds
-  # if logged_in?
-    erb :'user/show'
+
+  erb :'user/show'
 end
