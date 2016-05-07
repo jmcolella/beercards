@@ -1,21 +1,21 @@
-<h2> LOGIN TO PLAY </h2>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa:700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
-<% if @errors %>
-  <ul>
-    <% @errors.each do |message| %>
-      <li> <%= message %> </li>
+<h1> login to play </h1>
+
+
+<div class="begin_result_div">
+  <% if @errors %>
+    <ul>
+      <% @errors.each do |message| %>
+        <li class="errors"> <%= message %> </li>
+      <% end %>
+    </ul>
     <% end %>
-  </ul>
-  <% end %>
 
-<form action='/login' method="post">
-  <input type="text" name="user[username]" placeholder="Username">
-
-  <input type="password" name="user[password]" placeholder="Password">
-
-  <input type="submit" value="Login">
-</form>
-
-<form action='/logout' method='get'>
-  <input type="submit" value="Logout">
-</form>
+  <form action='/login' method="post">
+    <input class="input" type="text" name="user[username]" placeholder="Username">
+    <input class="input" type="password" name="user[password]" placeholder="Password"> <br>
+    <input class="begin_submit, input" id="submit" type="submit" value="login">
+  </form>
+</div>
