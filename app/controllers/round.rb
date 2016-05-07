@@ -11,6 +11,17 @@ post '/round' do
   redirect "/round/#{@round.id}"
 end
 
+get '/round/:id' do
+  @round = Round.find_by(id: params[:id])
+  @deck = @round.deck
+  cards = @deck.cards
+  incorrect_cards = cards.select do |card|
+    card.guesses.where(correct: true, round_id: @round.id).empty?
+  end
+  @card_display = incorrect_cards.shuffle.first
+   erb :'round/show'
+end
+
 #   @guess = Guess.create(params[:guess])
 #   current_card = Card.find_by(id: params[:guess][:card_id])
 #   deck = current_card.deck
@@ -34,11 +45,4 @@ end
 #   #check answer call
 
 
-get '/round/:id' do
-  @round = Round.find_by(id: params[:id])
-  @deck = @round.deck
-  cards = @deck.cards
-  @card_display = cards.first
-   erb :'round/show'
-end
 

@@ -3,7 +3,7 @@
 
 <%= @card_display.question %>
 
-<form method ="post" action="/round">
+<form method ="post" action="/round/<%=@round.id%>/guess">
   <input type ="hidden" name ="guess[round_id]" value= "<%=@round.id %>">
   <input type="hidden" name = "guess[card_id]" value= "<%=@card_display.id %>">
 <input type = "text" name = "guess[guess_name]">

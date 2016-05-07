@@ -8,6 +8,13 @@ class Guess < ActiveRecord::Base
   validates :guess_name, presence: true
 
 
+def check_correctness
+  if self.guess_name == self.card.answer
+      self.correct = true
+  else
+      self.correct
+  end
+end
 
 
 end
