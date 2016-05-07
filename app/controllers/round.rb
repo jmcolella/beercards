@@ -1,35 +1,48 @@
 
 get '/deck/:id/round' do
-  @deck = Deck.find_by(id: params[:id])
-  @round = Round.new(deck: @deck, user: current_user)
-  cards = @deck.cards
-  @card_display = cards.first
   #call method to display and go through cards in deck
   erb :'round/new'
 end
 
 
 post '/round' do
-  @guess = Guess.new(params[:guess])
-  current_card = params[:guess][:card_id]
-  @deck = params[:guess][:card_id].deck
-  cards = @deck.cards
-
-  until @guess.correct_answers_return.length == @deck.length
-
-    if @guess == current_card.answer
-      @guess.correct_guesses(current_card)
-      @card_display = cards.rotate[0]
-    else
-      @card_display = cards.rotate[0]
-    end
-
-  end
-  #check answer call
-  erb :'round/new'
+  @deck = Deck.find_by(id: params[:deck_id])
+  @round = Round.create(deck: @deck, user: current_user)
+  redirect "/round/#{@round.id}"
 end
 
 get '/round/:id' do
+  @round = Round.find_by(id: params[:id])
+  @deck = @round.deck
+  cards = @deck.cards
+  incorrect_cards = cards.select do |card|
+    card.guesses.where(correct: true, round_id: @round.id).empty?
+  end
+  @card_display = incorrect_cards.shuffle.first
    erb :'round/show'
 end
+
+#   @guess = Guess.create(params[:guess])
+#   current_card = Card.find_by(id: params[:guess][:card_id])
+#   deck = current_card.deck
+#   cards = deck.cards
+#   round_id = session[:round_id]
+#   @round = Round.find_by(id: round_id)
+
+#   # binding.pry
+# until @round.guesses.where(correct: true).length == deck.num_of_cards
+#   #until @round.correct_answers_return == 2
+
+#     if @guess.guess_name == current_card.answer
+#       @guess.correct = true
+#       @card_display = cards.rotate[0]
+#       erb :'round/new'
+#     else
+#       @card_display = cards.rotate[0]
+#       erb :'round/new'
+#     end
+#   end
+#   #check answer call
+
+
 

@@ -2,4 +2,8 @@
 
 <p>Are you ready to play?</p>
 
-<a href="/deck/<%= @deck.id %>/round">Begin!</a>
+
+<form method="post" action="/round">
+  <input type= "submit" value="Begin!">
+  <input type="hidden" name="deck_id" value="<%=@deck.id%>">
+</form>
