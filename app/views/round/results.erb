@@ -1,9 +1,12 @@
 <h1>Your results:</h1>
 
-<p>It took you <%= @total_guesses %> guesses to complete the round. </p>
 
-<p> You got <%=@first_guesses%> correct on the first try</p>
-<% if logged_in? %>
-<p><a href="/user/<%=@round.user_id%>">View your profile</a></p>
-<% end %>
+<div class="begin_result_div">
+  <p>It took you <%= @total_guesses %> guesses to complete the round. </p>
+
+  <p> You got <%=@first_guesses%> correct on the first try.</p>
+  <% if logged_in? %>
+  <p><a href="/user/<%=@round.user_id%>">view your profile</a></p>
+  <% end %>
+</div>
 

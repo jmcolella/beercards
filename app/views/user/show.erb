@@ -1,23 +1,26 @@
-<h1><%=@user.username %>'s Profile</h1>
+<h1><%=@user.username %>'s profile</h1>
 
-<%@user.rounds.each do |round|%>
-<h2><%=round.deck.name%></h2>
 
-<table>
-  <tr>
-    <td>Date Played</td>
-    <td>Number of Cards in Deck</td>
-    <td>Number of First Guesses Right</td>
-    <td>Total Number of Guesses</td>
-  </tr>
+<div class="begin_result_div">
+  <%@user.rounds.each do |round|%>
+  <h2 id="user_table_headers"><%=round.deck.name%></h2>
 
-  <tr>
-    <td><%=round.deck.created_at%></td>
-    <td><%=round.deck.num_of_cards%></td>
-    <% first_guesses = round.deck.cards.select {|card| card.guesses.where(round_id: round.id).length == 1} %>
-      <td><%= first_guesses.length %></td>
-    <td><%=round.guesses.length%></td>
-  </tr>
+  <table>
+    <tr>
+      <td class="header">date played</td>
+      <td class="header">cards in deck</td>
+      <td class="header">first guesses right</td>
+      <td class="header">total guesses</td>
+    </tr>
 
-</table>
-<%end%>
+    <tr>
+      <td class="stats"><%=round.deck.created_at.strftime("%m/%d/%y")%></td>
+      <td class="stats"><%=round.deck.num_of_cards%></td>
+      <% first_guesses = round.deck.cards.select {|card| card.guesses.where(round_id: round.id).length == 1} %>
+        <td class="stats"><%= first_guesses.length %></td>
+      <td class="stats"><%=round.guesses.length%></td>
+    </tr>
+
+  </table>
+  <%end%>
+</div>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
@@ -17,17 +19,23 @@
 
   <title></title>
 </head>
-<body>
+<body style="margin:8%">
 <% if logged_in? %>
-  <p>You are logged in, <a href="/user/<%=current_user.id%>"><%=current_user.username%></a></p>
-  <li><a href="/">Home</a></li>
-  <li><a href='/logout'>Log Out</a></li>
+  <ul class="nav" >
+    <li>you are logged in, <a href="/user/<%=current_user.id%>" style="text-decoration:none"><%=current_user.username%> </a> </li>
+    <li> | </li>
+    <li><a href="/" style="text-decoration:none">home </a> </li>
+    <li> | </li>
+    <li><a href='/logout' style="text-decoration:none">log out</a></li>
+  </ul>
 <% else %>
-<ul>
- <li><a href="/">Home</a></li>
-  <li><a href="/user/new">Sign up</a></li>
-  <li><a href="/login">Login</a></li>
-</ul>
+  <ul class="nav">
+    <li ><a href="/" style="text-decoration:none">home</a></li>
+    <li> | </li>
+    <li><a href="/user/new" style="text-decoration:none">sign up</a></li>
+    <li> | </li>
+    <li><a href="/login" style="text-decoration:none">login</a></li>
+  </ul>
 <% end %>
   <%= yield %>
 </body>

@@ -10,7 +10,7 @@ class Guess < ActiveRecord::Base
 
 def check_correctness
 
-  if self.guess_name == self.card.answer
+  if self.guess_name.downcase == self.card.answer.downcase
       self.update_attributes(correct: true)
   else
       self.correct
