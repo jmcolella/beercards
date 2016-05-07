@@ -1,5 +1,11 @@
 
-<h1>You are about to play <%= @deck.name %></h1>
+<h1><%= @deck.name %></h1>
+
+<% if @right %>
+  <p>You got it right!</p>
+<% elsif @wrong %>
+  <p>Wrong! Try again later!</p>
+<% end %>
 
 <%= @card_display.question %>
 
