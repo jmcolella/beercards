@@ -1,7 +1,7 @@
-<h1>Your results are</h1>
+<h1>Your results:</h1>
 
 <p>It took you <%= @total_guesses %> guesses to complete the round. </p>
 <% if logged_in? %>
-<p><a href="/user/<%=@user.id%>">View your profile</a></p>
+<p><a href="/user/<%=@round.user_id%>">View your profile</a></p>
 <% end %>
 

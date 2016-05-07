@@ -4,13 +4,17 @@
 <h2><%=round.deck.name%></h2>
 
 <table>
-  <td>
-    <tr>
-      <%=round.deck.created_at%>
-    </tr>
-    <tr>
-      <%=round.deck.num_of_cards%>
-    </tr>
-  </td>
+  <tr>
+    <td>Date Played</td>
+    <td>Number of Cards in Deck</td>
+    <td>Total Number of Guesses</td>
+  </tr>
+
+  <tr>
+    <td><%=round.deck.created_at%></td>
+    <td><%=round.deck.num_of_cards%></td>
+    <td><%=round.guesses.length%></td>
+  </tr>
+
 </table>
 <%end%>
