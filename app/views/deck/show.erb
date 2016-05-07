@@ -1,9 +1,16 @@
+<link href='https://fonts.googleapis.com/css?family=Comfortaa:700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
 <h1><%= @deck.name %> Flashcard Set </h1>
 
-<p>Are you ready to play?</p>
+<div class="begin_result_div">
+
+  <p>Are you ready to play?</p>
 
 
-<form method="post" action="/round">
-  <input type= "submit" value="Begin!">
-  <input type="hidden" name="deck_id" value="<%=@deck.id%>">
-</form>
+  <form method="post" action="/round">
+    <input class="begin_submit" id="submit" type= "submit" value="Begin!">
+    <input type="hidden" name="deck_id" value="<%=@deck.id%>">
+  </form>
+
+</dvi>
