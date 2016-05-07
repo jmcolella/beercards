@@ -15,11 +15,21 @@ get '/round/:id' do
   @round = Round.find_by(id: params[:id])
   @deck = @round.deck
   cards = @deck.cards
+
   incorrect_cards = cards.select do |card|
     card.guesses.where(correct: true, round_id: @round.id).empty?
   end
-  @card_display = incorrect_cards.shuffle.first
-   erb :'round/show'
+
+  if incorrect_cards.length > 0
+    @card_display = incorrect_cards.shuffle.first
+    erb :'round/show'
+  else
+    @total_guesses = Guess.where(round_id: @round.id).length
+    @user = @round.user_id
+    erb :'round/results'
+  end
+
+
 end
 
 #   @guess = Guess.create(params[:guess])

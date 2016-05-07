@@ -9,8 +9,9 @@ class Guess < ActiveRecord::Base
 
 
 def check_correctness
+
   if self.guess_name == self.card.answer
-      self.correct = true
+      self.update_attributes(correct: true)
   else
       self.correct
   end
