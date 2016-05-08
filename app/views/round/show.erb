@@ -2,7 +2,7 @@
 <link href='https://fonts.googleapis.com/css?family=Comfortaa:700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
-<h1><%= @deck.name %></h1>
+<h1><%= @deck.name.downcase %></h1>
   <div class= "cards">
   <% if @right %>
     <p class="right">You got it right!</p>
