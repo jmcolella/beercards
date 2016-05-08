@@ -14,7 +14,10 @@ post '/user' do
 end
 
 get '/user/:id' do
+  if logged_in?
    @user = User.find(params[:id])
-
-  erb :'user/show'
+   erb :'user/show'
+  else
+   redirect '/'
+  end
 end
